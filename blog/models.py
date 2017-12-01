@@ -17,16 +17,25 @@ class Category(models.Model):
 
 class Post(models.Model):
   title = models.CharField(max_length=50)
+  image = models.FileField(null=True, blank=True)
   subtitle = models.CharField(max_length=140,
                               blank=True, null=True)
   slug = models.SlugField(max_length=50, unique=True)
   body = models.TextField()
-  created = models.DateTimeField(auto_now_add=True)
+  created = models.DateTimeField(auto_now=False, auto_now_add=True)
+  updated = models.DateTimeField(auto_now=True, auto_now_add=False)
   blog = models.ForeignKey(Publication) #have a fk that points to publications
   categories = models.ForeignKey(Category)
   author = models.ForeignKey(settings.AUTH_USER_MODEL) #must import settings first. line 2. point to tht e authorized users model.
   def __str__(self):
       return self.title
   class Meta:
-      ordering = ['-created'] # you most likely want to see post ordered backwards. so you want to add the "-"
+      ordering = ['-created', '-updated'] # you most likely want to see post ordered backwards. so you want to add the "-"
       # everytime you look at posts, it will always show in this order
+class Comment(models.Model):
+    name = models.CharField(max_length=50)
+    title = models.CharField(max_length=50)
+    text = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
+    post = models.ForeignKey(Post)
+    karma = models.BooleanField()

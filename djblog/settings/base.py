@@ -18,6 +18,14 @@ BASE_DIR = os.path.dirname(
         os.path.dirname(os.path.abspath(__file__))
     )
 )
+# paul hacked this media part so that django will go thru all the apps and search for a static directory with that file's name.
+# in production, we'd want to swap this out for S3
+MEDIA_URL = '/static/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static')
+
+STATICFILES_DIRS = [
+    MEDIA_ROOT
+]
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -42,6 +50,7 @@ INSTALLED_APPS = [
 
     'blog',
     'chungtai',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -68,6 +77,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
             ],
         },
     },

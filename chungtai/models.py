@@ -4,6 +4,12 @@ from django.conf import settings #
 # Create your models here.
 class Class_Material(models.Model):
     upload = models.FileField(upload_to='uploads/%Y/%m/%d/')
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+class Document(models.Model):
+    description = models.CharField(max_length=255, blank=True)
+    document = models.FileField(upload_to='documents/')
+    uploaded_at = models.DateTimeField(auto_now_add=True)
 
 class Level(models.Model):
     name = models.CharField(max_length=50)

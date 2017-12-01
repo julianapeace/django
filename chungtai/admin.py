@@ -1,5 +1,5 @@
 from django.contrib import admin
-from chungtai.models import Level, Student, Class, Volunteer
+from chungtai.models import Level, Student, Class, Volunteer, Class_Material
 # Register your models here.
 @admin.register(Level)
 class LevelAdmin(admin.ModelAdmin):
@@ -18,3 +18,7 @@ class ClassAdmin(admin.ModelAdmin):
 class StudentAdmin(admin.ModelAdmin):
     list_display = ('name', 'class_level', 'created','author', 'volunteer')
     search_fields = ['name','class_level__name', 'volunteer__sector_name']
+
+@admin.register(Class_Material)
+class Class_MaterialAdmin(admin.ModelAdmin):
+    list_display = ('id', 'upload')
