@@ -49,9 +49,14 @@ INSTALLED_APPS = [
     'django_uwsgi',
 
     'blog',
-    'chungtai',
+    'temple',
     'rest_framework',
+    'graphene_django',
 ]
+
+GRAPHENE = {
+    'SCHEMA': 'temple.schema.schema'
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
