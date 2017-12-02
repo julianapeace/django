@@ -74,7 +74,7 @@ ROOT_URLCONF = 'djblog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['./templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -146,3 +146,9 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static-compiled")
 
 # Uncomment if using Heroku
 # SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Redirect to home URL after login (Default redirects to /accounts/profile/)
+LOGIN_REDIRECT_URL = '/home'
+
+# This logs any emails sent to the console (so you can copy the password reset link from the console)
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

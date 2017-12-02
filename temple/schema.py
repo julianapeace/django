@@ -2,7 +2,10 @@ from graphene import relay, ObjectType, Schema
 from graphene_django import DjangoObjectType
 from graphene_django.filter import DjangoFilterConnectionField
 from temple.models import Level, Student, Volunteer, Class
+"""
+GraphQL
 
+"""
 class LevelNode(DjangoObjectType):
     class Meta:
         model=Level

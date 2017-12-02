@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+<!--
+
+If you delete this form, process will automatically route you to django's admin site.
+
+-->
+{% block content %}
+<p>Logged out!</p>
+
+<a href="{% url 'login'%}">Click here to login again.</a>
+{% endblock %}

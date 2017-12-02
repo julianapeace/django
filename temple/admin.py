@@ -1,6 +1,12 @@
 from django.contrib import admin
 from temple.models import Level, Student, Class, Volunteer, Class_Material# Register your models here.
+"""
+SuperUser Account Login:
 
+username: julie
+password: julianamei
+
+"""
 @admin.register(Level)
 class LevelAdmin(admin.ModelAdmin):
     list_display = ('name',)
